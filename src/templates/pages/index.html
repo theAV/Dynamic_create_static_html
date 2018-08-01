@@ -1,0 +1,31 @@
+
+{% extends "./layout.html" %}
+{% set page_title = "Index" %} 
+{% block title -%}
+    {{page_title}} 
+{%- endblock %}
+
+{% block content%}
+    <section class="ct_banner_thumbs">
+        <a href="javascript:void(0);" data-bg="./assets/images/image-1.jpg" class="ct_banner">
+            <h2>Sky Grill</h2>
+        </a>
+        <a href="javascript:void(0);" data-bg="./assets/images/image-2.jpg" class="ct_banner">
+            <h2>Ginger</h2>
+        </a>
+        <a href="javascript:void(0);" data-bg="./assets/images/image-3.jpg" class="ct_banner">
+            <h2>Irish Pub</h2>
+        </a>
+        <a href="javascript:void(0);" data-bg="./assets/images/images-4.png" class="ct_banner">
+            <h2>Milano</h2> 
+        </a>
+    </section>
+{% endblock %}  
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('.ct_banner_thumbs').BBS();
+        });
+    </script>
+{% endblock %}

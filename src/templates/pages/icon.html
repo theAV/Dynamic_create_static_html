@@ -1,0 +1,53 @@
+{% extends "./layout.html" %}
+
+{% set page_title = "Icons" %} 
+
+{% block title -%}
+    {{page_title}} 
+{%- endblock %}
+
+{% block content%}
+  <section class="container">
+    <div class="mb-3">
+      <input type="range" min="10" max="25" value="20" id="size" />
+      <span id="c_size" style="margin-left:15px"></span>
+    </div>
+    <ul class="row icn-list text-center text-secondary">
+    {% for icn in ["add", "avatar", "bell", "calendar", "caret-down", "caret-up", "cart", "chevron-down", "chevron-up", "command", "contact", "delete", "door-handle", "heart", "key", "magnifier", "profile", "reassign", "remove", "telephone", "user", "star", "view", "edit"] %}
+      <li class="col-4 col-sm-2">
+        <p class="icn">{{icon.name(icn)}}</p>        
+        {{- icn -}}
+        <div><code>icon-{{icn}}</code></div>
+      </li>
+    {% endfor %}
+    </ul>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+      $(document).ready(function(){
+        var range = $('#size');
+        var c_size = $('#c_size');
+        var icn = $('.icn');
+        var icnLi = $('.icn-list>li');
+        
+        c_size.text(range.val()+'px');
+        icn.css('font-size', range.val()+'px');
+
+        range.on('input', function(e){
+            icn.css('font-size', e.target.value+'px');          
+            c_size.text(e.target.value + 'px');
+        })
+        icnLi.on('click', function(e){
+          var element = $(this).find('code');
+          var $temp = $("<input>");
+        $("body").append($temp);
+          $temp.val($(element).text()).select();
+          document.execCommand("copy");
+          alert("Copied the class name: " + $(element).text());
+          $temp.remove();        
+        })
+      })
+    </script>
+{% endblock %}

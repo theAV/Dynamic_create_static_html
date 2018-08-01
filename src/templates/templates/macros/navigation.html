@@ -1,0 +1,54 @@
+{% set navigation_bar = [
+    {
+        name: "Index",
+        url: "index.html"
+    },
+    {
+        name: "Products",
+        url: "products.html"
+    },
+    {
+        name: "Icons",
+        url: "icon.html"
+    },
+    {
+        name: "Documents",
+        subnavs: [
+            {
+                name: "Installation",
+                url: "installation.html"
+            },
+            {
+                name: "How to Use"
+            }
+        ]
+    }
+] %}
+
+
+
+{% for item in navigation_bar -%}
+    <li class="nav-item{{ " active" if page_title == item.name -}} {{ " dropdown" if item.subnavs }}">
+        {% if item.subnavs %}
+            <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="{{item.name}}Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{- item.name -}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="{{item.name}}Dropdown">
+                {% for subitem in item.subnavs %} 
+                    <a class="dropdown-item" href="{{subitem.url if subitem.url else "javascript:void(0);" }}">
+                        {{- subitem.name -}}
+                        {%- if page_title == subitem.name %} <span class="sr-only">(current)</span> {% endif -%}
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <a class="nav-link" href="{{item.url}}">
+                {{- item.name -}}
+                {%- if page_title == item.name %}
+                    <span class="sr-only">(current)</span>
+                {% endif -%}
+            </a>
+        {% endif %}
+      </li>
+{%- endfor %}
+      

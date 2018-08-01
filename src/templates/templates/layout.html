@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}{# content would be place inside head #}{% endblock %}
+    {% include "./partials/head.html" %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+{% import "./macros/icon.macros.html" as icon %}
+    <body>
+        <section class="grid">
+            {% include "./partials/header.html" %}
+            <main class="main">
+                {% block content %}{# page wise body content #}{% endblock %} 
+            </main>
+            {% include "./partials/footer.html" %}
+        </section>
+        <!--all scripts here-->
+        <script src="./assets/js/app.js"></script>
+        {% block scripts %}{# page wise body content #}{% endblock %} 
+    </body>
+</html>

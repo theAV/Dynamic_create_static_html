@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "fonticon";
+    src: url("../fonts/fonticon.ttf") format('truetype');
+    src: url('../fonts/fonticon.eot?#iefix') format('eot'),
+    url('../fonts/fonticon.woff2') format('woff2'),
+    url('../fonts/fonticon.woff') format('woff'),
+    url('../fonts/fonticon.ttf') format('truetype'),
+    url('../fonts/fonticon.svg#fonticon') format('svg');
+}
+
+@mixin styles{
+    font-family: "fonticon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+    text-decoration: none;
+    text-transform: none;
+    vertical-align: middle;
+}
+
+[class^="icon-"], [class*=" icon-"]{
+    @include styles;
+}
+
+
+$svg-font-map: ("add":"\E001", "avatar":"\E002", "bell":"\E003", "calendar":"\E004", "caret-down":"\E005", "caret-up":"\E006", "cart":"\E007", "chevron-down":"\E008", "chevron-up":"\E009", "command":"\E00A", "contact":"\E00B", "delete":"\E00C", "door-handle":"\E00D", "edit":"\E00E", "heart":"\E00F", "key":"\E010", "magnifier":"\E011", "profile":"\E012", "reassign":"\E013", "remove":"\E014", "star":"\E015", "telephone":"\E016", "user":"\E017", "view":"\E018", );
+
+@mixin icon($filename, $insert: before, $extend: true) {
+    &::#{$insert}{ content:map-get($svg-font-map, $filename); }
+}
+
+.icon-add { @include icon(add); }
+.icon-avatar { @include icon(avatar); }
+.icon-bell { @include icon(bell); }
+.icon-calendar { @include icon(calendar); }
+.icon-caret-down { @include icon(caret-down); }
+.icon-caret-up { @include icon(caret-up); }
+.icon-cart { @include icon(cart); }
+.icon-chevron-down { @include icon(chevron-down); }
+.icon-chevron-up { @include icon(chevron-up); }
+.icon-command { @include icon(command); }
+.icon-contact { @include icon(contact); }
+.icon-delete { @include icon(delete); }
+.icon-door-handle { @include icon(door-handle); }
+.icon-edit { @include icon(edit); }
+.icon-heart { @include icon(heart); }
+.icon-key { @include icon(key); }
+.icon-magnifier { @include icon(magnifier); }
+.icon-profile { @include icon(profile); }
+.icon-reassign { @include icon(reassign); }
+.icon-remove { @include icon(remove); }
+.icon-star { @include icon(star); }
+.icon-telephone { @include icon(telephone); }
+.icon-user { @include icon(user); }
+.icon-view { @include icon(view); }

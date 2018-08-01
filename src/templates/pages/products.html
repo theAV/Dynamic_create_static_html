@@ -1,0 +1,25 @@
+
+{% extends "./layout.html" %}
+{% set page_title = "Products" %}
+{% block title -%}
+    {{page_title}}
+{%- endblock %}
+
+{% block content%}
+<div class="container-fluid"> 
+  <div class="row">
+    {%- for item in range(0, 12) %}
+      <div class="col-md-2">
+        <div class="card mb-4 shadow-sm">
+          <img class="card-img-top" src="assets/images/image-3.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card Title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="javascript:void(0);" class="btn {{'btn-danger' if (item==2) else 'btn-primary'}} btn-sm">{{icon.name('view')}}<span class="ml-1">Go Somewhere</span></a>
+          </div>
+        </div>
+      </div> 
+    {%- endfor %} 
+  </div>
+</div>
+{% endblock %} 
