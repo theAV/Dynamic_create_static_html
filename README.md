@@ -1,4 +1,4 @@
-# dynamic_create_static_html
+# HTML templating with gulp task
 Gulp tasks for fast developing static and semantic html code with less efforts.
 
 run gulp for generating html pages
