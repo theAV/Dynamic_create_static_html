@@ -2,7 +2,6 @@
 const path = require('path'),
 	gulp = require('gulp'),
 	sass = require('gulp-sass'),
-	notify = require('gulp-notify'),
 	browserSync = require('browser-sync').create(),
 	wait = require('gulp-wait2'),
 	prettify = require('gulp-prettify'),
@@ -27,18 +26,19 @@ paths.assets = `${paths.build}/assets`;
 const tplHtmlPath = path.join(paths.templates, 'pages/*.html');
 
 // Static server
-gulp.task('browser-sync', () => {
+gulp.task('server', () => {
 	browserSync.init({
 		server: {
 			baseDir: path.join(__dirname, paths.build)
 		}
 	});
 	gulp.watch(path.join(paths.scssSrc, '**/*.scss'), ['sass']);
-	gulp.watch(path.join(paths.templates, '**/*.html'), ['render']).on('change', browserSync.reload);
+	gulp.watch(path.join(paths.templates, '**/*.html'), ['renderHTML']).on('change', browserSync.reload);
 	gulp.watch(path.join(paths.jssrc, '**/*.js'), ['importJs']).on('change', browserSync.reload);
+	gulp.watch(path.join(paths.imgrc, '**/*'), ['image']).on('change', browserSync.reload);
 });
 
-gulp.task('render', () => {
+gulp.task('renderHTML', () => {
 	gulp.src(tplHtmlPath)
 		.pipe(nunjucksRender({
 			path: [path.join(paths.templates, 'templates')] // String or Array
@@ -61,17 +61,8 @@ gulp.task('sass', () => {
 		.pipe(sourcemaps.write(''))
 		.pipe(gulp.dest(path.join(paths.assets, 'css')))
 		.pipe(browserSync.stream())
-		.pipe(
-			notify({
-				message: 'SCSS file dropped'
-			})
-		);
 });
 
-//scss/sass watch
-gulp.task('sass:watch', () => {
-	gulp.watch(path.join(paths.scssSrc, '**/*.scss'), ['sass']);
-});
 
 //svg to icon font
 gulp.task('iconfont', () => {
@@ -125,4 +116,4 @@ gulp.task('image', function () {
 		.pipe(gulp.dest(path.join(paths.assets, 'images')));
 });
 
-gulp.task('default', ['render', 'sass', 'image', 'browser-sync']);
+gulp.task('default', ['renderHTML', 'sass', 'iconfont', 'importJs', 'image', 'server']);

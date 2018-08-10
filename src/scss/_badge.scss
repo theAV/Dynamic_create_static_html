@@ -9,7 +9,7 @@
   font-size: $badge-font-size;
   font-weight: $badge-font-weight;
   line-height: 1;
-  text-align: center;
+  text-align: center; 
   white-space: nowrap;
   vertical-align: baseline;
   @include border-radius($badge-border-radius);
