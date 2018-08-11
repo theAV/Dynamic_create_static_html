@@ -1,5 +1,5 @@
 {
-  "name": "html_temps",
+  "name": "dynamic_create_static_html",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -11,7 +11,7 @@
     "browser-sync": "^2.24.5",
     "gulp": "^3.9.1",
     "gulp-iconfont": "^10.0.1",
-    "gulp-iconfont-css": "^2.1.0",
+    "gulp-iconfont-css": "^2.3.0",
     "gulp-image": "^4.3.0",
     "gulp-imports": "0.0.3",
     "gulp-minify": "^3.1.0",
@@ -22,5 +22,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-wait2": "0.0.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "hoek": "^5.0.4"
+  }
 }
