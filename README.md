@@ -11,7 +11,7 @@ run gulp importJs for import js files
 # Features
 1. Nunjucks for creating JS to HTML https://mozilla.github.io/nunjucks/
 2. html templating
-3. Browsersync
+3. Browsersync https://browsersync.io/
 4. gulp scss
 5. svg to icon font converter
 6. image optimization 
